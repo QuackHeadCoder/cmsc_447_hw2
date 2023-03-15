@@ -1,0 +1,56 @@
+{% extends 'header.html' %}
+
+{% block head %}
+<title>Student Grades</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Student Grades</h1>
+    <table>
+        <tr>            
+            <th>ID</th>
+            <th>Name</th>
+            <th>Points</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user['id'] }}</td>
+                <td>{{ user['name'] }}</td>
+                <td>{{ user['points'] }}</td>
+                <td>
+                    <a href="{{url_for('delete', id = user['id'])}}">Delete</a>
+                    <br>
+                    <a href="{{url_for('edit', id = user['id'])}}">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+
+    <div class="form">
+        <form action="/" method="POST">
+            <table>
+                <tr>
+                    <th><h4>ID</h4></th>
+                    <th><h4>Name</h4></th>
+                    <th><h4>Points</h4></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th><input type="text" name="name" id="name"></th>
+                    <th><input type="text" name="id" id="id"></th>
+                    <th><input type="text" name="points" id="points"></th>
+                    <th><input type="submit" value="Create"></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div class = "error_text">
+        {% if error %}
+        <h1> You gave us an error, we will destroy you </h1>
+        {%endif%}
+    </div>
+</div>
+{% endblock %}

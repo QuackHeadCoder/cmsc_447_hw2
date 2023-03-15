@@ -1,0 +1,25 @@
+{% extends 'header.html' %}
+{% block head %}
+<title>Edit Student</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <form action="/{{user.id}}/edit" method="POST">
+        <table>
+            <tr>
+                <th><h4>ID</h4></th>
+                <th><h4>Name</h4></th>
+                <th><h4>Points</h4></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th><h4>{{ request.form['id'] or user['id']}}</h1></th>
+                <th><input type="text" name="name" id="name" value="{{ request.form['name'] or user['name']}}"></th>
+                <th><input type="text" name="points" id="points" value="{{ request.form['points'] or user['points']}}"></th>
+                <th><input type="submit" value="Edit"></th>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock %}

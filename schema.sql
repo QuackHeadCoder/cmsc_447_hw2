@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+    name TEXT NOT NULL,
+    id INTEGER NOT NULL PRIMARY KEY,
+    points INTEGER NOT NULL
+);
